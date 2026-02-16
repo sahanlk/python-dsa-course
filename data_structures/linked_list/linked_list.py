@@ -37,7 +37,7 @@ class LinkedList:
     def pop(self):
         """
         Removing the last node (tail)
-
+        Technique: 2 pointer pattern
         Time Complexity: O(n)
         """
         if self.length == 0:  # Edge case: empty list
@@ -76,7 +76,6 @@ class LinkedList:
     def pop_first(self):
         """
         Remove the first node from the list.
-
         Time Complexity: O(1)
         """
         if self.length == 0:
@@ -107,7 +106,6 @@ class LinkedList:
     def set(self, index, value):
         """
         Update the value of a Node.
-
         Time Complexity: O(n)
         """
         node = self.get(index)
@@ -119,7 +117,6 @@ class LinkedList:
     def insert(self, index, value):
         """
         Insert a node into a given index.
-
         Time Complexity: O(n)
         """
         if index > self.length or index < 0:
@@ -154,6 +151,24 @@ class LinkedList:
         self.length -= 1
         return temp
 
+    def reverse(self):
+        """
+        Reverse the linked List.
+        Technique: 3-pointer pattern
+        Time Complexity: O(n)
+        """
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        # after = temp.next
+        before = None
+
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
     def dump(self):
         """ Visualizing the Linked List """
         node = self.head
@@ -166,11 +181,5 @@ if __name__ == "__main__":
     l = LinkedList(10)
     l.append(20)
     l.append(30)
-    # l.append(40)
-    # l.append(50)
-    # l.append(98)
-    # print(l.pop_first())
-    l.insert(3, 87)
-    l.insert(4, 60)
-    l.remove(3)
+    l.reverse()
     l.dump()
