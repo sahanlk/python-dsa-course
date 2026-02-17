@@ -22,7 +22,6 @@ class LinkedList:
     def append(self, value):
         """
         Adding a node to the end
-
         Time Complexity: O(1)
         """
         new_node = Node(value)
@@ -60,7 +59,6 @@ class LinkedList:
     def prepend(self, value):
         """
         Add n item to the beginning
-
         Time Complexity: O(1)
         """
         node = Node(value)
@@ -92,7 +90,6 @@ class LinkedList:
     def get(self, index):
         """
         Get a node by index
-
         Time Complexity: O(n)
         """
         if index < 0 or index >= self.length:
@@ -136,6 +133,7 @@ class LinkedList:
     def remove(self, index):
         """
         Remove a node from the given index.
+        Time Complexity: O(n)
         """
         if index >= self.length or index < 0:
             return
